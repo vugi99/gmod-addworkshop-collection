@@ -8,6 +8,9 @@ Provides a resource add workshop collection to GarrysMod. Note that those addons
 ## More collections
 * If you want to load more collections on start you should change the addworkshop_collections variable inside the script.
 
+## Global Functions
+* Resource_AddWorkshopCollection(string Collection_ID)
+
 ## Script output
 #### Output prefix : [AWC] (Add Workshop Collection)
 
