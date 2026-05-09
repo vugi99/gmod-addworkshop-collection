@@ -1,6 +1,6 @@
 if not SERVER then return end
 
-AWC_VERSION = "0.1.0"
+AWC_VERSION = "0.1.1"
 
 local download_collection_cvar = CreateConVar("sv_collection_clients_download", "", FCVAR_ARCHIVE, "Adds a workshop collection to be downloaded by clients")
 
@@ -107,14 +107,12 @@ for i, v in ipairs(addworkshop_collections) do
     Resource_AddWorkshopCollection(v)
 end
 
-hook.Add("InitPostEntity", "RessourceAddWorkshopCollectionConvar", function()
-    local ipe_cvar_val = download_collection_cvar:GetString()
-    if ipe_cvar_val ~= "" then
-        Resource_AddWorkshopCollection(ipe_cvar_val)
-    else
-        --print("download_collection_cvar is invalid")
-    end
-end)
+local ipe_cvar_val = download_collection_cvar:GetString()
+if ipe_cvar_val ~= "" then
+    Resource_AddWorkshopCollection(ipe_cvar_val)
+else
+    --print("download_collection_cvar is invalid")
+end
 
 cvars.AddChangeCallback("sv_collection_clients_download", function(convar, oldValue, newValue)
     if oldValue ~= newValue then
